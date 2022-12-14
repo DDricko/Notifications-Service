@@ -19,7 +19,7 @@ export class Notification {
     }
 
     public get recipientId(): string {
-        return this.recipientId;
+        return this.props.recipientId;
     }
 
     public set content(content: string) {
