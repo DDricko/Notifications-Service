@@ -12,12 +12,19 @@ export class NotificationsController {
   async create(@Body() body: CreateNotificationBody) {
     const { recipientId, content, category } = body;
 
-    const {} = await this.sendNotification.execute({
+    const { notification } = await this.sendNotification.execute({
       recipientId,
       content,
       category,
     });
 
-    return { Notification };
+    return { 
+      notification: {
+        id: notification.id,
+        content: notification.content.value,
+        category: notification.category,
+        recipientId: notification.recipientId,
+      },
+    };
   }
 }
